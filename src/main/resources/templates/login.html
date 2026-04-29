@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kullanıcı Girişi</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h2>Hoş Geldiniz</h2>
+<p>Lütfen devam etmeden önce adınızı, soyadınızı ve e-posta adresinizi girin.</p>
+<p><strong>Not:</strong> Sadece <strong>Yüksek</strong> öncelikli görevlerinizde e-posta ile hatırlatma alacaksınız.</p>
+
+<form th:action="@{/login}" method="post">
+  <div>
+    <label for="firstName">Ad:</label>
+    <input type="text" id="firstName" name="firstName" required>
+  </div>
+  <div>
+    <label for="lastName">Soyad:</label>
+    <input type="text" id="lastName" name="lastName" required>
+  </div>
+  <div>
+    <label for="email">E-posta:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <button type="submit">Devam Et</button>
+</form>
+
+</body>
+</html>

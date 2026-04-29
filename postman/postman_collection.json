@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "Akilli Gorev Yonetimi API",
+    "_postman_id": "12345678-aaaa-bbbb-cccc-1234567890ab",
+    "description": "Ak\u0131ll\u0131 G\u00f6rev Y\u00f6netimi API u\u00e7lar\u0131n\u0131 test etmek i\u00e7in olu\u015fturulmu\u015f Postman koleksiyonu.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "T\u00fcm G\u00f6revleri Getir",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Yeni G\u00f6rev Ekle",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Yeni G\\u00f6rev\", \"description\": \"\\u00d6rnek a\\u00e7\\u0131klama\", \"dueDate\": \"2025-05-12\", \"priority\": true}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      }
+    },
+    {
+      "name": "G\u00f6revi Tamamla",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tasks/1/complete",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tasks",
+            "1",
+            "complete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "G\u00f6rev Sil",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tasks/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "tasks",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Motivasyon S\u00f6z\u00fc Getir",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/quote/motivational",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "quote",
+            "motivational"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PDF Rapor Olu\u015ftur",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/pdf/report",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "pdf",
+            "report"
+          ]
+        }
+      }
+    },
+    {
+      "name": "G\u00fcnl\u00fck Rapor (PDF)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/tasks/report/daily",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "tasks",
+            "report",
+            "daily"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Haftal\u0131k Rapor (PDF)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/tasks/report/weekly",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "tasks",
+            "report",
+            "weekly"
+          ]
+        }
+      }
+    }
+  ]
+}

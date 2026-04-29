@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Yeni Görev Ekle</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>Yeni Görev Ekle</h1>
+
+<div th:if="${errorMessage}" class="alert alert-danger" style="margin-bottom: 20px;">
+  <p th:text="${errorMessage}"></p>
+</div>
+
+<p><em>Yüksek öncelikli görevler için girişte belirttiğiniz e-posta adresinize hatırlatma gönderilir.</em></p>
+
+<form th:action="@{/tasks}" method="post">
+  <label for="title">Başlık:</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="description">Açıklama:</label>
+  <textarea id="description" name="description" rows="3" required></textarea>
+
+  <label for="priorityLevel">Öncelik:</label>
+  <select id="priorityLevel" name="priorityLevel" required>
+    <option value="Düşük">Düşük</option>
+    <option value="Orta">Orta</option>
+    <option value="Yüksek">Yüksek</option>
+  </select>
+
+  <label for="dueDate">Teslim Tarihi:</label>
+  <input type="datetime-local" id="dueDate" name="dueDate" required>
+
+  <button type="submit">Görev Ekle</button>
+  <a th:href="@{/tasks}" class="btn">Geri Dön</a>
+</form>
+
+</body>
+</html>

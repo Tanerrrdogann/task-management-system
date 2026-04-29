@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Görev Listesi</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Üst Bar -->
+<div class="header">
+    <div>
+        <strong th:text="${userFullName}">Merhaba, Kullanıcı!</strong>
+    </div>
+    <div>
+        <a th:href="@{/logout}">
+            <button type="button" class="logout-btn">Çıkış Yap</button>
+        </a>
+    </div>
+</div>
+
+<div th:if="${quote}" class="motivation-box">
+    <strong>Motivasyon:</strong> <span th:text="${quote}">Motivasyon cümlesi buraya gelecek.</span>
+</div>
+
+<h1>Görev Listesi</h1>
+
+<form th:action="@{/tasks}" method="get" style="margin-bottom: 20px;">
+    <input type="text" name="search" th:value="${param.search}" placeholder="Görev ara..." />
+    <select name="filterStatus">
+        <option th:value="''" th:selected="${param.filterStatus == null}">Tüm Durumlar</option>
+        <option th:value="true" th:selected="${param.filterStatus == 'true'}">Tamamlananlar</option>
+        <option th:value="false" th:selected="${param.filterStatus == 'false'}">Bekleyenler</option>
+    </select>
+    <button type="submit">Ara</button>
+</form>
+
+<!-- İşlem Butonları -->
+<div style="margin-bottom: 20px;">
+    <a th:href="@{/task-form}" class="btn">Görev Ekle</a>
+    <a th:href="@{/tasks/pdf}" class="btn">PDF Oluştur</a>
+    <a th:href="@{/tasks/report/daily}" class="btn">Günlük Rapor</a>
+    <a th:href="@{/tasks/report/weekly}" class="btn">Haftalık Rapor</a>
+</div>
+
+<div th:if="${tasks != null and !tasks.isEmpty()}">
+    <table>
+        <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Öncelik</th>
+            <th>Bitiş Tarihi</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.title}">Başlık</td>
+            <td th:text="${task.description}">Açıklama</td>
+            <td th:text="${task.priorityLevel}">Öncelik</td>
+            <td th:text="${#temporals.format(task.dueDate, 'dd.MM.yyyy HH:mm')}">Tarih</td>
+            <td th:text="${task.completed ? 'Tamamlandı' : 'Bekliyor'}">Durum</td>
+            <td>
+                <form th:action="@{/tasks/complete}" method="post" class="inline-form" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${task.id}" />
+                    <button type="submit" style="margin-right: 5px;">Tamamla</button>
+                </form>
+                <form th:action="@{/tasks/delete}" method="post" class="inline-form" style="display:inline;"
+                      onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+                    <input type="hidden" name="id" th:value="${task.id}" />
+                    <button type="submit">Sil</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p th:if="${tasks == null or tasks.isEmpty()}">Henüz hiç görev eklenmemiş.</p>
+
+</body>
+</html>
