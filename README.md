@@ -2,6 +2,11 @@
 
 Task Management System is a Spring Boot web application for creating, tracking, and reporting personal tasks. It includes a Thymeleaf interface, REST endpoints, H2 persistence, email reminder support for high-priority tasks, motivational quotes, and PDF exports.
 
+## Projeyi Yapanlar
+
+- Ismail Taner Erdogan
+- Nisa Goksen
+
 ## Features
 
 - Create, list, search, complete, and delete tasks
