@@ -5,9 +5,10 @@ Task Management System is a Spring Boot web application for creating, tracking, 
 ## Features
 
 - Create, list, search, complete, and delete tasks
+- Search tasks by title and filter them by completion status
 - Assign priority levels and due dates
 - Send email reminders for high-priority tasks when SMTP credentials are configured
-- Generate task list, daily report, and weekly report PDFs
+- Download task list, daily report, and weekly report PDFs
 - Fetch a motivational quote from an external API
 - Start with demo tasks so the UI is ready for screenshots and demos
 - Keep application logs under `logs/log.txt`
